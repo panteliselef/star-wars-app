@@ -1,0 +1,9 @@
+.card-list-container {
+  position: relative;
+  background: rgba(255, 255, 255,0.2);
+  border-radius: 20px;
+  max-width: 400px;
+  max-height: calc(100vh - 100px);
+  overflow: auto;
+
+}
