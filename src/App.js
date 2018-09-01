@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import CardList from './components/CardList';
-import Scroll from './components/Scroll';
+import Header from './components/Header';
+import Logo from './components/Logo';
 
-import ReactDOM from 'react-dom';
 
 class App extends Component {
 
@@ -11,7 +11,8 @@ class App extends Component {
     super();
     this.state = {
       peopleList : [],
-      nextPageUrl: ""
+      nextPageUrl: "",
+      infiniteDataLoad: false,
     }
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -29,9 +30,12 @@ class App extends Component {
     .then( data => {
       this.setState({peopleList: data.results,nextPageUrl: data.next});
     })
-
-
-    ReactDOM.findDOMNode(this).addEventListener('scroll',this.handleScroll)
+  }
+  
+  componentDidUpdate () {
+    if(this.state.infiniteDataLoad === true) {
+      this.handleScroll();
+    }
   }
 
   
@@ -48,34 +52,35 @@ class App extends Component {
     })
   }
   handleScroll = (e) => {
-    var elmnt = document.getElementById("scrolling");
-    var y = elmnt.scrollTop;
-    var c = elmnt.scrollHeight;
-    var a = elmnt.offsetHeight;
-    var isloading = false;
-    console.log(y,a,c);
-    if(y+a === c) {
-      e.stopPropagation();
-      console.log("Bottom");
-      isloading=true;
-      this.loadMoreUsers();
-      isloading=false
+    if (this.state.infiniteDataLoad === true) {
 
+      var elmnt = document.getElementById("scrolling");
+      var y = elmnt.scrollTop;
+      var c = elmnt.scrollHeight;
+      var a = elmnt.offsetHeight;
+      // console.log(y,a,c);
+      if(y+a === c) {
+        console.log("Bottom");
+        this.loadMoreUsers();
+      }
     }
+  }
+
+  activateInfinteDataLoad = () => {
+    this.setState({infiniteDataLoad: true});
   }
 
 
   render() {
     return (
-      <div className="App" onScroll={this.handleScroll}>
-        <div className="App-container">
-          <h1 className="">Star Wars App</h1>
-        </div>
-        
-        <CardList people={this.state.peopleList}/>
 
-        
-      </div>
+      <React.Fragment>
+      <Header/>
+      <Logo/>
+        <div className="App" onScroll={this.handleScroll}>
+          <CardList handler={this.activateInfinteDataLoad}  people={this.state.peopleList}/>
+        </div>
+      </React.Fragment>
     );
   }
 }

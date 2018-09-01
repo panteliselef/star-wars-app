@@ -1,9 +1,15 @@
 .card-list-container {
   position: relative;
-  background: rgba(255, 255, 255,0.2);
-  border-radius: 20px;
+  border-radius: 10px;
   max-width: 400px;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 250px);
   overflow: auto;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
+  margin: auto;
+}
 
+button.hidden {
+  display: none;
 }

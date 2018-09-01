@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import personImg from '../images/person.svg';
 
 class Card extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Card extends React.Component {
     this.state = {
       homeWorld: ""
     }
+    this.showDetails = this.showDetails.bind(this);
   }
 
   componentDidMount() {
@@ -19,15 +21,31 @@ class Card extends React.Component {
     })
   }
   
+  showDetails = (e) => {
+    console.log(e.target.parentElement.nextSibling.classList.add('visible'));
+    // TODO:
+    // MAKE THIS BUTTON HAVE A TOGGLE BEHAVIOR
+    // CHECH https://stackoverflow.com/questions/45999031/react-toggle-class-onclick-and-call-other-function
+  }
 
   render () {
-    const {name, homeWorld,height} = this.props;
+    const {name, homeWorld,height,gender} = this.props;
     return (
       <div className="card-container">
-        <div>
-         <h2>{name}</h2> 
-         <h3>{this.state.homeWorld}</h3>
-         <h4>{height}</h4>
+        <img className="person-img" src={personImg}></img>
+        <div className="card-info-container">
+          <div className="name">{name}</div> 
+          <div className="det-preview">
+            <span>
+              {gender + " "}
+            </span>
+            <span>
+              {height + "cm"}
+            </span>
+            <a onClick={this.showDetails} href="#">{"view more"}</a>
+          </div>
+          {/* <div>{this.state.homeWorld}</div> */}
+          <div className="det-full">dwaw</div>
         </div>
       </div>
     );

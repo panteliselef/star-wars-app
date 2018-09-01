@@ -1,13 +1,22 @@
 import React from 'react';
 import Card from './Card';
 import './CardList.css';
-import Scroll from './Scroll';
 
 const CardList = (props) => {
 
+  const {people,handler} = props;
+
+  const buttonClicked = (e) => {
+    handler();
+    hideElement(e); 
+  }
+  const hideElement = (e) => {
+    var el = e.target;
+    el.classList.add('hidden');
+    console.log("E Of Button",);
+  }
 
 
-  const {people} = props;
   return (
     <div id="scrolling" className="card-list-container">
       {
@@ -18,10 +27,13 @@ const CardList = (props) => {
               homeWorld={person.homeworld}
               name={person.name}
               height={person.height}
+              gender={person.gender}
               />
           )
         })
       }
+      
+      <button id="btn" onClick={buttonClicked}>{"See more"}</button>
     </div>
   );
 }
