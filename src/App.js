@@ -3,6 +3,7 @@ import './App.css';
 import CardList from './components/CardList';
 import Header from './components/Header';
 import Logo from './components/Logo';
+import SeeMoreButton from './components/SeeMoreButton';
 
 
 class App extends Component {
@@ -23,12 +24,15 @@ class App extends Component {
   }
 
   componentDidMount () {
-    fetch("https://swapi.co/api/people")
+    fetch("https://swapi.co/api/people/")
     .then( response => {
-      return response.json()
+      return response.json();
     })
     .then( data => {
       this.setState({peopleList: data.results,nextPageUrl: data.next});
+    })
+    .catch(err => {
+      console.log("opps",err);
     })
   }
   
@@ -49,6 +53,9 @@ class App extends Component {
                      peopleList: newArr})
       console.log(data)
       console.log("currentPeopleList", this.state.peopleList);
+    })
+    .catch(err => {
+      console.log("opps",err);
     })
   }
   handleScroll = (e) => {
@@ -75,10 +82,11 @@ class App extends Component {
     return (
 
       <React.Fragment>
-      <Header/>
+      {/* <Header/> */}
       <Logo/>
         <div className="App" onScroll={this.handleScroll}>
-          <CardList handler={this.activateInfinteDataLoad}  people={this.state.peopleList}/>
+          <CardList people={this.state.peopleList}/>
+          <SeeMoreButton handler={this.activateInfinteDataLoad}/>
         </div>
       </React.Fragment>
     );

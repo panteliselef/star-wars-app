@@ -1,12 +1,19 @@
 .card-container {
   border-top: 1px solid #EDEDED;
   padding: 20px 10px;
+  margin: 10px;
   display: grid;
   grid-template-columns: 50px auto;
+  border-radius: 5px;
   grid-template-rows: auto auto;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   grid-column-gap: 7px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
+  flex: 1 1 250px;
+  
 }
 .card-container:first-child {
   border: none;

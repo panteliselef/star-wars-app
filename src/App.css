@@ -1,6 +1,7 @@
 .App {
-  text-align: left;
+  text-align: center;
   color: #333;
+  padding-bottom: 30px;
 }
 .App-container {
   background: #333;

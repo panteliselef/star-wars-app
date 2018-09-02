@@ -1,0 +1,18 @@
+button.see-more-button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  padding: 13px 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: all .4s;
+  cursor: pointer;
+}
+button.see-more-button:hover {
+  background-color: #F2F2F2;
+
+}

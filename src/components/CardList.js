@@ -4,20 +4,11 @@ import './CardList.css';
 
 const CardList = (props) => {
 
-  const {people,handler} = props;
-
-  const buttonClicked = (e) => {
-    handler();
-    hideElement(e); 
-  }
-  const hideElement = (e) => {
-    var el = e.target;
-    el.classList.add('hidden');
-    console.log("E Of Button",);
-  }
+  const {people} = props;
 
 
   return (
+
     <div id="scrolling" className="card-list-container">
       {
         people.map((person,i) => {
@@ -34,7 +25,6 @@ const CardList = (props) => {
         })
       }
       
-      <button id="btn" onClick={buttonClicked}>{"See more"}</button>
     </div>
   );
 }

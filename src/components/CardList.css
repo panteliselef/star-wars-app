@@ -1,13 +1,16 @@
 .card-list-container {
   position: relative;
-  border-radius: 10px;
-  max-width: 400px;
-  max-height: calc(100vh - 250px);
+  display: flex;
+  max-width: 1500px;
+  flex-direction: row ;
+  flex-flow: unset wrap;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   overflow: auto;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
   margin: auto;
+  align-content: flex-start;
+  padding: 30px;
+  text-align: left;
 }
 
 button.hidden {
