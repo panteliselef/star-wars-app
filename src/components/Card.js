@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.css';
 import personImg from '../images/person.svg';
+import ViewMoreButton from './ViewMoreButton';
 
 class Card extends React.Component {
   constructor(props) {
@@ -22,14 +23,12 @@ class Card extends React.Component {
   }
   
   showDetails = (e) => {
-    console.log(e.target.parentElement.nextSibling.classList.add('visible'));
-    // TODO:
-    // MAKE THIS BUTTON HAVE A TOGGLE BEHAVIOR
-    // CHECH https://stackoverflow.com/questions/45999031/react-toggle-class-onclick-and-call-other-function
+    console.log(e.target.parentElement.parentElement.nextSibling.classList.add('visible'));
   }
 
+
   render () {
-    const {name, homeWorld,height,gender} = this.props;
+    const {name, homeWorld,height,gender,films} = this.props;
     return (
       <div className="card-container">
         <img className="person-img" src={personImg}></img>
@@ -42,11 +41,12 @@ class Card extends React.Component {
             <span>
               {height + "cm"}
             </span>
-            <a onClick={this.showDetails} href="#">{"view more"}</a>
+            {/* <a onClick={this.showDetails} href="#">{"view more"}</a> */}
+            <ViewMoreButton text="View More"/>
           </div>
           {/* <div>{this.state.homeWorld}</div> */}
-          <div className="det-full">dwaw</div>
         </div>
+        <div className="det-full">{films}</div>
       </div>
     );
 

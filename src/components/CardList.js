@@ -28,6 +28,7 @@ const CardList = (props) => {
               name={person.name}
               height={person.height}
               gender={person.gender}
+              films={person.films}
               />
           )
         })
