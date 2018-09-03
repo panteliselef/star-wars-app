@@ -7,7 +7,8 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      homeWorld: ""
+      homeWorld: "",
+      filmList: []
     }
     this.showDetails = this.showDetails.bind(this);
   }
@@ -26,9 +27,29 @@ class Card extends React.Component {
     console.log(e.target.parentElement.parentElement.nextSibling.classList.add('visible'));
   }
 
+  getFilms = (arr) => {
+    let newArr = []
+    return (
+      arr.map(film => 
+        fetch(film)
+          .then(respone => respone.json())
+          .then(data => {
+            console.log(data.title)
+
+            return (
+              <div>{data.title}</div>
+            )
+          })
+          // .then( () => this.setState({filmList: }))
+        )
+    )
+  }
+
 
   render () {
     const {name, homeWorld,height,gender,films} = this.props;
+
+
     return (
       <div className="card-container">
         <img className="person-img" src={personImg}></img>
@@ -46,7 +67,14 @@ class Card extends React.Component {
           </div>
           {/* <div>{this.state.homeWorld}</div> */}
         </div>
-        <div className="det-full">{films}</div>
+        <div className="det-full">{
+          films.map((film,i) => {
+            return (
+              <div key={i} >{film}</div>
+            )
+          })
+
+        }</div>
       </div>
     );
 

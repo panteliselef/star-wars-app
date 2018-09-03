@@ -2,31 +2,42 @@ import React from 'react';
 import Card from './Card';
 import './CardList.css';
 
-const CardList = (props) => {
+class CardList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      filmList: []
+    }
+  }
 
-  const {people} = props;
-
-
-  return (
-
-    <div id="scrolling" className="card-list-container">
-      {
-        people.map((person,i) => {
-          return (
-            <Card
-              key={i}
-              homeWorld={person.homeworld}
-              name={person.name}
-              height={person.height}
-              gender={person.gender}
-              films={person.films}
-              />
-          )
-        })
-      }
-      
-    </div>
-  );
+  render() {
+    const {people} = this.props;
+    return (
+      <div id="scrolling" className="card-list-container">
+        {
+          people.map((person,i) => {
+            var newArr = [];
+            
+            person.films.map(film => 
+              fetch(film).then(response => response.json()).then(data => newArr.push(data.title))
+            )
+            
+            return (
+              <Card
+                key={i}
+                homeWorld={person.homeworld}
+                name={person.name}
+                height={person.height}
+                gender={person.gender}
+                films={newArr}
+                />
+            )
+          })
+        }
+        
+      </div>
+    );
+  }
 }
 
 export default CardList;
