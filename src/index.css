@@ -1,14 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa|Contrail+One|Open+Sans|Quicksand|Roboto+Mono|Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Contrail+One|Roboto+Mono');
 
 body {
   margin: 0;
   padding: 0;
-  /* font-family: 'Contrail One', cursive; */
-  /* font-family: 'Quicksand', sans-serif; */
-  font-family: 'Varela Round', sans-serif;
-  /* font-family: 'Roboto Mono', monospace; */
-  font-family: 'Open Sans', sans-serif;
-  /* background-image: url('./images/bg-photo.jpg') */
+  font-family: 'Contrail One', sans-serif;
 }
 header {
   height: 70px;

@@ -4,7 +4,7 @@ button.see-more-button {
   -moz-appearance: none;
   background: transparent;
   border: none;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   padding: 13px 20px;
   font-size: 15px;
   text-transform: uppercase;
